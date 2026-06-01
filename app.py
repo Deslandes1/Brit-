@@ -85,8 +85,14 @@ st.markdown("""
         transform: scale(1.02);
         box-shadow: 0 0 15px #4488ff;
     }
-    .sidebar .stSelectbox label, .sidebar .stMarkdown, .sidebar .stCaption {
-        color: #cce4ff;
+    /* Sidebar custom text colors */
+    .sidebar-lightblue {
+        color: #8bb9ff !important;
+        font-weight: normal;
+    }
+    .sidebar-strongwhite {
+        color: #ffffff !important;
+        font-weight: bold;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -188,23 +194,19 @@ def get_audio_bytes(text, voice):
     loop.close()
     return result
 
-# ================== Sidebar ==================
+# ================== Sidebar with Custom Text Colors ==================
 with st.sidebar:
     st.image("https://img.icons8.com/fluency/96/circled.png", width=80)
-    st.markdown("## GlobalInternet.py")
-    st.markdown("**Gesner Deslandes**, Engineer-in-Chief")
+    st.markdown('<span class="sidebar-lightblue" style="font-size:1.5rem; font-weight:600;">GlobalInternet.py</span>', unsafe_allow_html=True)
+    st.markdown('<span class="sidebar-strongwhite">Gesner Deslandes, Engineer-in-Chief</span>', unsafe_allow_html=True)
     st.markdown("---")
-    st.markdown("### 🌐 Language")
-    language = st.selectbox("Choose language", list(prayers.keys()))
+    st.markdown('<span class="sidebar-strongwhite">🌐 Language</span>', unsafe_allow_html=True)
+    language = st.selectbox("Choose language", list(prayers.keys()), label_visibility="collapsed")
     st.markdown("---")
-    st.markdown("### 📞 Contact")
-    st.markdown("📱 (509)-47385663")
-    st.markdown("✉️ deslandes78@gmail.com")
-    st.markdown("🌐 [GlobalInternet.py](https://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app/)")
-    st.markdown("---")
-    st.markdown("### 💰 Offer a Donation")
-    st.markdown("Support this eternal work: **$9.99 USD** (one‑time)")
-    st.markdown("*All proceeds keep the energy alive*")
+    st.markdown('<span class="sidebar-strongwhite">📞 Contact</span>', unsafe_allow_html=True)
+    st.markdown('<span class="sidebar-strongwhite">📱 (509)-47385663</span>', unsafe_allow_html=True)
+    st.markdown('<span class="sidebar-strongwhite">✉️ deslandes78@gmail.com</span>', unsafe_allow_html=True)
+    st.markdown('<span class="sidebar-strongwhite">🌐 <a href="https://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app/" target="_blank" style="color:#ffffff; text-decoration:none;">GlobalInternet.py</a></span>', unsafe_allow_html=True)
     st.markdown("---")
     st.caption("© 2025 GlobalInternet.py")
 
