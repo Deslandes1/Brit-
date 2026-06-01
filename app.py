@@ -193,8 +193,9 @@ with col1:
     st.title("🕊️ Britney Gengel – Haiti's Saint 🕊️")
     st.markdown("### *A Canonization Rosary Book*")
 with col2:
-    avatar_url = "https://raw.githubusercontent.com/Deslandes1/Rosary-of-Kettely-Elucia-/refs/heads/main/Gesner%20Deslandes.png"
-    st.markdown(f'<img src="{avatar_url}" class="avatar-img" style="float:right;">', unsafe_allow_html=True)
+    # Use the raw GitHub URL for the image
+    brit_avatar_url = "https://raw.githubusercontent.com/Deslandes1/Brit-/main/Brit.jpg"
+    st.markdown(f'<img src="{brit_avatar_url}" class="avatar-img" style="float:right;">', unsafe_allow_html=True)
 
 st.markdown("#### *Canonized by Gesner Deslandes – Eternal Light of Haiti*")
 st.caption("Built by Gesner Deslandes at GlobalInternet.py")
