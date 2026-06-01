@@ -10,27 +10,34 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# ================== Styling ==================
+# ================== Blue Themed Styling ==================
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&display=swap');
     .stApp {
-        background: radial-gradient(circle at center, #1a0f0a, #2a1e12);
-        color: #fdf0d8;
+        background: radial-gradient(circle at center, #0a2f6c, #03152e);
+        color: #e8f0ff;
+    }
+    .stApp, [data-testid="stSidebar"], [data-testid="stSidebarUserContent"], section[data-testid="stSidebar"] {
+        background: radial-gradient(circle at center, #0a2f6c, #03152e) !important;
+        background-attachment: fixed !important;
+    }
+    [data-testid="stSidebar"] {
+        border-right: 1px solid rgba(100, 180, 255, 0.2) !important;
     }
     h1, h2, h3 {
         font-family: 'Cinzel', serif;
-        color: #ffcc88;
-        text-shadow: 0 0 8px #cc8844;
+        color: #8bb9ff;
+        text-shadow: 0 0 8px #2266cc;
     }
     .prayer-card {
-        background: rgba(0,0,0,0.7);
-        backdrop-filter: blur(10px);
+        background: rgba(10, 30, 70, 0.75);
+        backdrop-filter: blur(8px);
         border-radius: 30px;
         padding: 2rem;
         margin: 1.5rem 0;
-        border: 1px solid rgba(255,200,100,0.5);
-        box-shadow: 0 0 25px rgba(255,200,100,0.2);
+        border: 1px solid rgba(100, 180, 255, 0.5);
+        box-shadow: 0 0 25px rgba(60, 120, 200, 0.3);
     }
     .footer {
         text-align: center;
@@ -47,7 +54,7 @@ st.markdown("""
     .energy-orb {
         width: 120px;
         height: 120px;
-        background: radial-gradient(circle, rgba(255,200,100,0.3), transparent);
+        background: radial-gradient(circle, rgba(80, 150, 255, 0.3), transparent);
         border-radius: 50%;
         margin: 20px auto;
         animation: pulse 3s infinite;
@@ -62,8 +69,24 @@ st.markdown("""
         width: 90px;
         height: 90px;
         object-fit: cover;
-        border: 2px solid #ffaa66;
-        box-shadow: 0 0 20px rgba(255,170,102,0.6);
+        border: 2px solid #88bbff;
+        box-shadow: 0 0 20px rgba(100, 150, 255, 0.6);
+    }
+    .stButton button {
+        background: linear-gradient(90deg, #2266cc, #4488ff);
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 40px;
+        padding: 0.5rem 1.2rem;
+        transition: 0.2s;
+    }
+    .stButton button:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 15px #4488ff;
+    }
+    .sidebar .stSelectbox label, .sidebar .stMarkdown, .sidebar .stCaption {
+        color: #cce4ff;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -193,7 +216,6 @@ with col1:
     st.title("🕊️ Britney Gengel – Haiti's Saint 🕊️")
     st.markdown("### *A Canonization Rosary Book*")
 with col2:
-    # Use the raw GitHub URL for the image
     brit_avatar_url = "https://raw.githubusercontent.com/Deslandes1/Brit-/main/Brit.jpg"
     st.markdown(f'<img src="{brit_avatar_url}" class="avatar-img" style="float:right;">', unsafe_allow_html=True)
 
@@ -215,9 +237,9 @@ def rosary_counter(person_name):
                 st.session_state[f"beads_{person_name}"][i] = not st.session_state[f"beads_{person_name}"][i]
                 st.rerun()
             if st.session_state[f"beads_{person_name}"][i]:
-                st.markdown('<div style="color:#ffaa44; text-align:center;">✨</div>', unsafe_allow_html=True)
+                st.markdown('<div style="color:#88bbff; text-align:center;">✨</div>', unsafe_allow_html=True)
             else:
-                st.markdown('<div style="color:#666; text-align:center;">○</div>', unsafe_allow_html=True)
+                st.markdown('<div style="color:#446688; text-align:center;">○</div>', unsafe_allow_html=True)
     
     if all(st.session_state[f"beads_{person_name}"]):
         st.success(f"✨ You have completed the rosary for Britney Gengel! May her light shine forever. ✨")
@@ -238,7 +260,7 @@ if st.button("🔊 Recite Prayer (Energy Activation)", key="britney_pray"):
         audio_bytes = get_audio_bytes(prayers[language]["text"], prayers[language]["voice"])
         st.audio(audio_bytes, format="audio/mp3")
     st.balloons()
-    st.markdown('<div style="background: radial-gradient(circle, gold, transparent); padding: 1rem; border-radius: 20px; text-align:center;">✨ The spirit of Britney Gengel embraces Haiti. Amen. Amen. Amen. ✨</div>', unsafe_allow_html=True)
+    st.markdown('<div style="background: radial-gradient(circle, #4488ff, transparent); padding: 1rem; border-radius: 20px; text-align:center; color:white;">✨ The spirit of Britney Gengel embraces Haiti. Amen. Amen. Amen. ✨</div>', unsafe_allow_html=True)
 
 rosary_counter("Britney")
 st.markdown('</div>', unsafe_allow_html=True)
